@@ -99,7 +99,7 @@ module stupet::stupet {
 
 //===========Item_functions==========
     public entry fun mint_item(user: &mut User,types: u64,ctx:&mut TxContext){
-        
+        assert!(user.total_score >= 10,EscoreNotEnough);
         if(types == 1){
         let item = Item{
             id: object::new(ctx),
@@ -107,6 +107,7 @@ module stupet::stupet {
             url: url::new_unsafe_from_bytes(b"https://example.com/item.jpg"),
             mold: utf8(b"cap"),
         };
+            user.total_score = user.total_score - 10;
             transfer::transfer(item,sender(ctx));
         }
         else if(types == 2){
@@ -116,6 +117,7 @@ module stupet::stupet {
                 url: url::new_unsafe_from_bytes(b"https://example.com/item.jpg"),
                 mold: utf8(b"action"),
             };
+            user.total_score = user.total_score - 10;
             transfer::transfer(item,sender(ctx));
         }
         else{
@@ -125,6 +127,7 @@ module stupet::stupet {
                 url: url::new_unsafe_from_bytes(b"https://example.com/item.jpg"),
                 mold: utf8(b"item"),
             };
+            user.total_score = user.total_score - 10;
             transfer::transfer(item,sender(ctx));
         }
         
@@ -141,7 +144,7 @@ module stupet::stupet {
             birthdate: sui::clock::timestamp_ms(clock),
             attributes: vector[],
             exp:0,
-            url: url::new_unsafe_from_bytes(b"https://example.com/pet.jpg")
+            url: url::new_unsafe_from_bytes(b"https://static-1317507328.cos.ap-nanjing.myqcloud.com/other/4a55c3a273541901ee3c82e91ddb3f2f.gif")
         };
 
     emit(Event_petCreated{
@@ -237,12 +240,9 @@ module stupet::stupet {
     public fun get_attributes(pet: &Pet): vector<String> {
         pet.attributes
     }
+
+//=============test============
+    [#test]
+
 }
-
-
-
-
-
-
-
-
+    
