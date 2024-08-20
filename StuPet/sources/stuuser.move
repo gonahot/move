@@ -40,21 +40,18 @@ module stupet::stuuser {
     }
 
     // add
-    public entry fun add_points(points: u64, ctx: &mut TxContext) {
+    public entry fun add_points(user: &mut User, points: u64, ctx: &mut TxContext) {
         //add points on User;
-        let mut user = get_user(ctx.sender());
         user.points = user.points + points;
         //add exp on Pet;
-        stupet::add_exp(stupet::get_pet(ctx.sender()), points);
+        stupet::add_exp(user.pet, points);
     }
 
     // use
-    public entry fun use_points(points: u64, ctx: &mut TxContext) {
-        //use points on User;
-        let mut user = get_user(ctx.sender());
+    public entry fun use_points(user: &mut User, points: u64, ctx: &mut TxContext) {
         assert!(user.points >= points, ENotEnoughPoints);
         user.points = user.points - points;
         //add exp on Pet;
-        stupet::add_exp(stupet::get_pet(ctx.sender()), points);
+        stupet::add_exp(user.pet, points);
     }
 }
