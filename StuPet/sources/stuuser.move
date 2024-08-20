@@ -4,7 +4,7 @@ module stupet::stuuser {
     use sui::clock::Clock;
     use stupet::stupet::Pet;
     use stupet::stupet;
-
+    use sui::url::Url;
     //===========ERROR========
 
     const ENotEnoughPoints: u64 = 101;
@@ -34,7 +34,7 @@ module stupet::stuuser {
 
     // create pet
     public entry fun create_pet(user: &mut User, name: String, clock: &Clock, ctx: &mut TxContext) {
-        let pet = stupet::create_pet(name, clock, ctx);
+        let pet = stupet::create(name, clock, ctx);
         user.pet = option::some(pet);
         user.points = INIT_PIONTS;
     }

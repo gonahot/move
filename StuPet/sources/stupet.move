@@ -2,7 +2,7 @@ module stupet::stupet {
     use std::string::{String,utf8};
     use sui::tx_context::{TxContext,sender};
     use sui::object::delete;
-    use sui::url::{Self,Url};
+    use sui::url::Url;
     use sui::transfer::{public_transfer, transfer};
     use std::vector;
     use sui::object::{Self,ID,UID};
@@ -28,7 +28,7 @@ module stupet::stupet {
     const Type_action:u64 = 2;
     const Type_item:u64 = 3;
 
-//=== ========Struct========
+//===========Struct========
     public struct User has key,store{    
         id: UID,
         total_score: u64,
@@ -170,8 +170,8 @@ module stupet::stupet {
     }
 
     //===========pet_functions==========
-    public fun create_pet(name: String, clock: &Clock, ctx: &mut TxContext): &mut Pet{
-        let url = utf8(b"https://example.com/pet.jpg");
+    public fun create(name: String, clock: &Clock, ctx: &mut TxContext): &mut Pet{
+        let url = url::new_unsafe_from_bytes(b"https://example.com/pet.jpg");
         let pet = Pet {
             id: object::new(ctx),
             name,
@@ -233,7 +233,7 @@ module stupet::stupet {
         pet.birthdate
     }
 
-    public fun get_url(pet: &Pet): String {
+    public fun get_url(pet: &Pet): Url {
         pet.url
     }
 
@@ -241,8 +241,6 @@ module stupet::stupet {
         pet.attributes
     }
 
-//=============test============
-    [#test]
 
 }
     
