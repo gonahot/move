@@ -133,7 +133,7 @@ module stupet::stupet {
             grade_level:1,
             birthdate: sui::clock::timestamp_ms(clock),
             attributes: vector[],
-            url: url::new_unsafe_from_bytes(b"https://example.com/pet.jpg")
+            url: url::new_unsafe_from_bytes(b"https://static-1317507328.cos.ap-nanjing.myqcloud.com/other/4a55c3a273541901ee3c82e91ddb3f2f.gif")
         };
 
         emit(Event_petCreated{
