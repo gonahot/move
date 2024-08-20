@@ -40,7 +40,7 @@ module stupet::stuuser {
     }
 
     // add
-    public entry fun add_points(user: &mut User, points: u64, ctx: &mut TxContext) {
+    public entry fun add_points(user: &mut User, points: u64) {
         //add points on User;
         user.points = user.points + points;
         //add exp on Pet;
@@ -48,7 +48,7 @@ module stupet::stuuser {
     }
 
     // use
-    public entry fun use_points(user: &mut User, points: u64, ctx: &mut TxContext) {
+    public entry fun use_points(user: &mut User, points: u64) {
         assert!(user.points >= points, ENotEnoughPoints);
         user.points = user.points - points;
         //add exp on Pet;
