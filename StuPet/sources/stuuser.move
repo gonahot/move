@@ -15,7 +15,7 @@ module stupet::stuuser {
     //===========STRUCT========
     public struct User has key, store {
         id: UID,
-        pet: Option<&Pet>,
+        pet: Option<Pet>,
         points: u64,
         owner: address,
     }
@@ -27,7 +27,7 @@ module stupet::stuuser {
             id: object::new(ctx),
             owner: ctx.sender(),
             points: 0,
-            pet: option::none<&Pet>(),
+            pet: option::none<Pet>(),
         };
         transfer::public_transfer(user, ctx.sender());
     }
@@ -40,7 +40,7 @@ module stupet::stuuser {
     }
 
     // add
-    public entry fun add_points(points: u64, ctx: &mut TxContext) acquires User {
+    public entry fun add_points(points: u64, ctx: &mut TxContext) {
         //add points on User;
         let mut user = get_user(ctx.sender());
         user.points = user.points + points;
@@ -49,16 +49,12 @@ module stupet::stuuser {
     }
 
     // use
-    public entry fun use_points(points: u64, ctx: &mut TxContext) acquires User {
+    public entry fun use_points(points: u64, ctx: &mut TxContext) {
         //use points on User;
         let mut user = get_user(ctx.sender());
         assert!(user.points >= points, ENotEnoughPoints);
         user.points = user.points - points;
         //add exp on Pet;
         stupet::add_exp(stupet::get_pet(ctx.sender()), points);
-    }
-
-    public fun get_user(address: address): &mut User acquires User {
-        borrow_global_mut<User>(address)
     }
 }
