@@ -1,5 +1,5 @@
 # SuiPet
-
+目前SuiPet中所涉及的所有NFT图片已经上传至walrus，网站部署地址：https://2766kjzwi03jtjzdd5858shp4zic8aivm1nw4y8njrci8ejnu2.walrus.site/home
 ## 项目说明
 SuiPet是Sui上的一款成长性宠物，以NFT换装为核心逻辑同时内置题库，使得学习的过程变得不再枯燥。<br>
 在游戏中，玩家需要通过签到和答题来获得积分并提高宠物等级，用积分换购服饰，让宠物的形象更加多变。<br>
