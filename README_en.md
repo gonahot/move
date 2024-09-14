@@ -1,5 +1,6 @@
 # SuiPet
-All NFT images involved in SuiPet have been uploaded to Walrus. The website deployment address is: https://2766kjzwi03jtjzdd5858shp4zic8aivm1nw4y8njrci8ejnu2.walrus.site/home
+All NFT images involved in SuiPet have been uploaded to Walrus. The website deployment address is: https://ppcrgfwi58d6m81yobkipe37uvcr50w5ouuasm14livks9not.walrus.site
+client code:https://github.com/gonahot/client/tree/main/subpet
 
 ## Project Description
 SuiPet is a growth-oriented pet on Sui with NFT dressing-up as the core gameplay logic, while also incorporating a question bank to make the learning process less tedious.<br>
